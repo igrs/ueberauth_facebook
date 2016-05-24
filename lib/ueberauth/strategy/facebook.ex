@@ -140,7 +140,7 @@ defmodule Ueberauth.Strategy.Facebook do
         set_errors!(conn, [error("token", "unauthorized")])
       {:ok, %OAuth2.Response{status_code: status_code, body: user}}
         when status_code in 200..399 ->
-        put_private(conn, :facebook_user, user)
+          put_private(conn, :facebook_user, user)
       {:error, %OAuth2.Error{reason: reason}} ->
         set_errors!(conn, [error("OAuth2", reason)])
     end
